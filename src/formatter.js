@@ -22,31 +22,36 @@ export function formatNumber(number) {
             maximumFractionDigits: get('precision', 2)
         };
 
+    const isNegative = number < 0,
+        negativePrefix = isNegative ? '-' : '';
+
+    if (isNegative) number = -number;
+
     switch (format) {
         case 'separated':
             const separator = get('separator') || '_';
 
-            return number.toLocaleString(locale, options).replace(/,/g, separator)
+            return negativePrefix + number.toLocaleString(locale, options).replace(/,/g, separator)
         case 'scientific':
-            return number.toExponential(2).toLocaleString(locale, options);
+            return negativePrefix + number.toExponential(2).toLocaleString(locale, options);
         case 'compact':
-            return formatCompact(number, false, locale, options);
+            return negativePrefix + formatCompact(number, false, locale, options);
         case 'compactLong':
-            return formatCompact(number, true, locale, options);
+            return negativePrefix + formatCompact(number, true, locale, options);
         case 'hexadecimal':
             return `0x${number.toString(16)}`;
         case 'octal':
             return `0o${number.toString(8)}`;
         case 'bytes':
-            return formatBytes(number, 1000, ByteSuffixes, locale, options);
+            return negativePrefix + formatBytes(number, 1000, ByteSuffixes, locale, options);
         case 'iecBytes':
-            return formatBytes(number, 1024, IECSuffixes, locale, options);
+            return negativePrefix + formatBytes(number, 1024, IECSuffixes, locale, options);
         case 'naturalLanguage':
-            return formatNaturalLanguage(number, false);
+            return formatNaturalLanguage(number, isNegative, false);
         case 'naturalLanguageLong':
-            return formatNaturalLanguage(number, true);
+            return formatNaturalLanguage(number, isNegative, true);
         default:
-            return number.toLocaleString(locale, options);
+            return negativePrefix + number.toLocaleString(locale, options);
     }
 }
 
@@ -64,7 +69,7 @@ function formatBytes(number, power, suffixes, locale, localeOptions) {
     return (number / Math.pow(power, suffix)).toLocaleString(locale, localeOptions) + suffixes[suffix];
 }
 
-function formatNaturalLanguage(number, long = false) {
+function formatNaturalLanguage(number, isNegative, long = false) {
     function _numToLanguage(num) {
         if (num < 10) return NaturalNumbers[num];
         else if (num < 20) return NaturalTeens[num - 10];
@@ -96,6 +101,8 @@ function formatNaturalLanguage(number, long = false) {
 
         number = Math.floor(number / 1000);
     }
+
+    if (isNegative) parts[0] = 'negative ' + parts[0];
 
     if (!long) return parts.shift().trim();
 

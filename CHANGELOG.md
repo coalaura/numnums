@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.3]
+- Properly support negative numbers
+- Dynamically evaluate basic math expressions
+
 ## [1.0.2]
 - Add some more categories and tags to the package.json
 
