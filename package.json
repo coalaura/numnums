@@ -1,0 +1,105 @@
+{
+	"name": "numnums",
+	"displayName": "NumNums",
+	"description": "The vs-code extension that makes working with large numbers easier.",
+	"version": "1.0.0",
+	"author": "coalaura",
+	"publisher": "coalaura",
+	"icon": "logo.png",
+	"galleryBanner": {
+		"color": "#6CB7F7",
+		"theme": "light"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"keywords": [
+		"numbers"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/coalaura/numnums"
+	},
+	"engines": {
+		"vscode": "^1.77.0"
+	},
+	"categories": [
+		"Snippets",
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "NumNums",
+			"properties": {
+				"numnums.format": {
+					"type": "string",
+					"default": "default",
+					"enum": [
+						"default",
+						"separated",
+						"scientific",
+						"compact",
+						"compactLong",
+						"hexadecimal",
+						"octal",
+						"bytes",
+						"iecBytes",
+						"naturalLanguage",
+						"naturalLanguageLong"
+					],
+					"enumDescriptions": [
+						"1,234,567,890",
+						"1_234_567_890",
+						"1.23e+9",
+						"1.2b",
+						"1.2 billion",
+						"0x499602d2",
+						"0o11145401322",
+						"1.23 GB",
+						"1.15 GiB",
+						"one billion",
+						"one billion two hundred and thirty-four million five hundred and sixty-seven thousand eight hundred and ninety"
+					],
+					"description": "What format to display numbers in. Not all formats support locales, custom separators or precision."
+				},
+				"numnums.locale": {
+					"type": "string",
+					"default": "en-US",
+					"description": "The locale to use for formats that support a locale."
+				},
+				"numnums.separator": {
+					"type": "string",
+					"default": "_",
+					"description": "The separator to use (if 'separated' is selected)."
+				},
+				"numnums.precision": {
+					"type": "number",
+					"default": 2,
+					"minimum": 0,
+					"maximum": 12,
+					"description": "The maximum number of digits to display after the decimal point."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"package": "npm run build && vsce package",
+		"build": "node esbuild.config.js",
+		"watch": "node esbuild.config.js --watch"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.77.0",
+		"esbuild": "^0.19.5",
+		"esbuild-copy-static-files": "^0.1.0",
+		"eslint": "^8.36.0",
+		"glob": "^8.1.0",
+		"mocha": "^10.2.0",
+		"typescript": "^4.9.5"
+	}
+}
