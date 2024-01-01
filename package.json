@@ -2,7 +2,7 @@
 	"name": "numnums",
 	"displayName": "NumNums",
 	"description": "The vs-code extension that makes working with large numbers easier.",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"author": "coalaura",
 	"publisher": "coalaura",
 	"icon": "logo.png",
@@ -12,7 +12,16 @@
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"keywords": [
-		"numbers"
+		"formatting",
+		"numbers",
+		"large-numbers",
+		"data-formatting",
+		"number-formatting",
+		"productivity",
+		"developer-tools",
+		"utilities",
+		"number-formatting",
+		"readability"
 	],
 	"repository": {
 		"type": "git",
@@ -22,7 +31,8 @@
 		"vscode": "^1.77.0"
 	},
 	"categories": [
-		"Snippets",
+		"Formatters",
+		"Visualization",
 		"Other"
 	],
 	"activationEvents": [
