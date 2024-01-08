@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.4]
+- Properly support languages with built-in number separators like 100_000_000
+
 ## [1.0.3]
 - Properly support negative numbers
 - Dynamically evaluate basic math expressions

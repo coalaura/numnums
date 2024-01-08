@@ -2,7 +2,7 @@
 	"name": "numnums",
 	"displayName": "NumNums",
 	"description": "The vs-code extension that makes working with large numbers easier.",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"author": "coalaura",
 	"publisher": "coalaura",
 	"icon": "logo.png",
