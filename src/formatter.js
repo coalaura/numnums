@@ -19,7 +19,7 @@ export function formatNumber(number) {
     const format = get('format', 'default'),
         locale = get('locale', vscode.env.language),
         options = {
-            maximumFractionDigits: get('precision', 2)
+            maximumFractionDigits: get('precision', 3)
         };
 
     const isNegative = number < 0,

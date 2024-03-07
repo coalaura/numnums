@@ -1,6 +1,6 @@
 # NumNums
 
-The vs-code extension that makes working with large numbers easier.
+The vs-code extension that makes working with large numbers and expressions easier.
 
 ### Formats numbers on hover
 ![example_1](.github/example_1.png)
