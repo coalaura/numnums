@@ -74,6 +74,9 @@ function findExpressionInString(str) {
         }
     }
 
+    // If we're still in brackets, it's invalid
+    if (brackets > 0) return false;
+
     // Trim any starting + signs
     exp = exp.replace(/(?<=^|\()\++/m, '');
 
@@ -84,6 +87,11 @@ function findExpressionInString(str) {
 
     // If the expression starts or ends with an operator or has more than 2 consecutive operators, it's invalid
     if (exp.match(/^[*\/.^_]|[*\/.^_]{2}|[*\/.^_+-]$/m)) {
+        return false;
+    }
+
+    // If it doesn't have any numbers, it's invalid
+    if (!exp.match(/\d/)) {
         return false;
     }
 

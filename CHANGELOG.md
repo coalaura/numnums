@@ -1,5 +1,8 @@
 # Change Log
 
+## [1.0.6]
+- Fixed some bugs with the expression finder, causing it to match invalid expressions
+
 ## [1.0.5]
 - Improve expression finder to better find and evaluate expressions
 
