@@ -2,7 +2,7 @@
 	"name": "numnums",
 	"displayName": "NumNums",
 	"description": "The vs-code extension that makes working with large numbers and expressions easier.",
-	"version": "1.0.6",
+	"version": "2.0.0",
 	"author": "coalaura",
 	"publisher": "coalaura",
 	"icon": "logo.png",
@@ -20,7 +20,6 @@
 		"productivity",
 		"developer-tools",
 		"utilities",
-		"number-formatting",
 		"readability"
 	],
 	"repository": {
@@ -36,7 +35,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onLanguage"
+		"*"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -44,6 +43,7 @@
 			"title": "NumNums",
 			"properties": {
 				"numnums.format": {
+					"order": 1,
 					"type": "string",
 					"default": "default",
 					"enum": [
@@ -51,45 +51,198 @@
 						"separated",
 						"scientific",
 						"compact",
-						"compactLong",
 						"hexadecimal",
 						"octal",
+						"binary",
+						"base36",
 						"bytes",
 						"iecBytes",
+						"fraction",
+						"percentage",
+						"duration",
+						"length",
+						"datetime",
 						"naturalLanguage",
-						"naturalLanguageLong"
+						"roman",
+						"color",
+						"filePermissions",
+						"currency"
 					],
 					"enumDescriptions": [
 						"1,234,567,890",
 						"1_234_567_890",
 						"1.23e+9",
-						"1.2b",
-						"1.2 billion",
-						"0x499602d2",
-						"0o11145401322",
-						"1.23 GB",
-						"1.15 GiB",
+						"1.2b (Extends infinitely up to 10^3000)",
+						"0x499602D2 (Base 16)",
+						"0o11145401322 (Base 8)",
+						"0b100100110010110 (Base 2)",
+						"coalaura (Base 36)",
+						"1.23 GB (Extends to Quettabyte)",
+						"1.15 GiB (Extends to Quebibyte)",
+						"1 1/2",
+						"87.43%",
+						"14d 6h 56m 7s (Planck time to Kalpas)",
+						"1 km 500 m 20 cm (Planck length to Quettameter)",
+						"Tue, Mar 28, 2023, 10:40:00 AM (Unix Timestamp)",
 						"one billion",
-						"one billion two hundred and thirty-four million five hundred and sixty-seven thousand eight hundred and ninety"
+						"MCCXXXIV (Roman Numerals)",
+						"#FF69B4 (Hex/RGB)",
+						"rwxr-xr-x (Unix chmod)",
+						"$1,450,000.50"
 					],
 					"description": "What format to display numbers in. Not all formats support locales, custom separators or precision."
 				},
-				"numnums.locale": {
+				"numnums.displayMode": {
+					"order": 2,
 					"type": "string",
-					"default": "en-US",
-					"description": "The locale to use for formats that support a locale."
-				},
-				"numnums.separator": {
-					"type": "string",
-					"default": "_",
-					"description": "The separator to use (if 'separated' is selected)."
+					"default": "short",
+					"enum": [
+						"short",
+						"full"
+					],
+					"enumDescriptions": [
+						"Use single units with decimals (e.g., '14.2d', '1.2b', '613.29 EiB')",
+						"Use expanded multi-unit fractions (e.g., '14d 4h 48m', '1 billion 200 million', '613 EiB 123 PiB')"
+					],
+					"description": "Whether to use shorthand single-unit display or fully expanded cascading display."
 				},
 				"numnums.precision": {
+					"order": 3,
 					"type": "number",
 					"default": 2,
 					"minimum": 0,
 					"maximum": 12,
 					"description": "The maximum number of digits to display after the decimal point."
+				},
+				"numnums.separator": {
+					"order": 4,
+					"type": "string",
+					"default": "_",
+					"description": "The custom separator to use for large numbers (e.g., '_', ' ', or ',')."
+				},
+				"numnums.locale": {
+					"order": 5,
+					"type": "string",
+					"default": "en-US",
+					"description": "The locale to use for formats that support a locale."
+				},
+				"numnums.currencyCode": {
+					"order": 6,
+					"type": "string",
+					"default": "USD",
+					"description": "(Currency format only). The 3-letter currency code to format with (e.g., USD, EUR, JPY)."
+				},
+				"numnums.durationBaseUnit": {
+					"order": 7,
+					"type": "string",
+					"default": "ms",
+					"enum": [
+						"planck",
+						"qs",
+						"rs",
+						"ys",
+						"jiffy",
+						"zs",
+						"as",
+						"atomic",
+						"fs",
+						"svedberg",
+						"ps",
+						"ns",
+						"shake",
+						"us",
+						"ms",
+						"cs",
+						"s",
+						"m",
+						"h",
+						"d",
+						"w",
+						"mo",
+						"y",
+						"dec",
+						"c",
+						"mil",
+						"Ts",
+						"Ma",
+						"Ps",
+						"galactic",
+						"eon",
+						"kalpa",
+						"Es"
+					],
+					"description": "(Duration format only). Defines the base time unit that raw numbers represent."
+				},
+				"numnums.lengthBaseUnit": {
+					"order": 8,
+					"type": "string",
+					"default": "m",
+					"enum": [
+						"planckLength",
+						"qm",
+						"rm",
+						"ym",
+						"zm",
+						"am",
+						"fm",
+						"pm",
+						"nm",
+						"um",
+						"thou",
+						"mm",
+						"in",
+						"cm",
+						"dm",
+						"ft",
+						"yd",
+						"m",
+						"dam",
+						"hm",
+						"km",
+						"mi",
+						"nmi",
+						"Mm",
+						"Gm",
+						"au",
+						"Tm",
+						"Pm",
+						"ly",
+						"pc",
+						"Em",
+						"Zm",
+						"Ym",
+						"Rm",
+						"Qm"
+					],
+					"description": "(Length format only). Defines the base metric/imperial unit that raw numbers represent."
+				},
+				"numnums.unitLabels": {
+					"order": 9,
+					"type": "string",
+					"default": "short",
+					"enum": [
+						"short",
+						"long"
+					],
+					"enumDescriptions": [
+						"Use shorthand unit labels (e.g., 'y', 'km', 'd', 'ms')",
+						"Use full word unit labels (e.g., 'years', 'kilometers', 'days')"
+					],
+					"description": "(Duration, Length, and Byte formats). Whether to display shorthand labels or full word labels."
+				},
+				"numnums.timestampBaseUnit": {
+					"order": 10,
+					"type": "string",
+					"default": "ms",
+					"enum": [
+						"ms",
+						"s"
+					],
+					"enumDescriptions": [
+						"Milliseconds",
+						"Seconds"
+					],
+					"description": "(Datetime format only). Whether to treat the number as standard Unix seconds or JavaScript milliseconds."
 				}
 			}
 		}
