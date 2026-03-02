@@ -12,13 +12,18 @@ NumNums parses the numbers in your code and instantly displays them in your pref
 ### Evaluates basic math expressions
 ![expression](.github/expression.png)
 
+### Scales to the absolute limits of theoretical math
+Whether you need scientific precision or cosmic epochs, NumNums cascades exact measurements infinitely.
+![example_huge](.github/example_huge.png)
+
 ### Supported Formats
 NumNums supports nearly 20 distinct formatting modes out of the box, including:
 
 * **Math & Scale**: Separated, Scientific, Compact, Fraction, Percentage
 * **Developer**: Binary, Hexadecimal, Octal, Base36
-* **Data**: Bytes, IEC Bytes (scaling past Quettabytes up to Endbytes)
-* **Time & Space**: Duration (Planck time to Poincaré Cycles), Length (Planck lengths to Omega lengths, including Imperial & Astronomical)
+* **Data**: Bytes, IEC Bytes (scaling up to 10^162 Geopbytes and Endbytes)
+* **Time**: Duration (From Planck time cascading up to the Poincaré Cycle and Heat Death of the Universe)
+* **Space**: Length (Metric, Imperial, Astronomical, scaling up to Multiverse Nodes)
 * **System & UI**: Datetime (Unix timestamps), File Permissions (chmod), Color (Hex/RGB), Currency
 * **Linguistic**: Natural Language, Roman Numerals
 
@@ -28,4 +33,4 @@ NumNums is highly customizable through your VS Code settings. You can configure:
 * Display modes to toggle between condensed decimals (`14.2d`) and fully expanded fractions (`14d 4h 48m`).
 * Base units for time and length to control how raw numbers are interpreted (e.g., milliseconds vs seconds).
 * Custom grouping separators, regional locales, and custom currency codes.
-* Shorthand vs full-word unit labels with automatic singular/plural grammar.
+* Shorthand vs full-word unit labels.
