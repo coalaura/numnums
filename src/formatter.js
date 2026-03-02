@@ -1,16 +1,250 @@
 import { config } from "./config.js";
 
-const ByteSuffixesShort = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB", "RB", "QB"],
-	ByteSuffixesLong = ["byte", "kilobyte", "megabyte", "gigabyte", "terabyte", "petabyte", "exabyte", "zettabyte", "yottabyte", "ronnabyte", "quettabyte"],
-	IECSuffixesShort = ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB", "RiB", "QiB"],
-	IECSuffixesLong = ["byte", "kibibyte", "mebibyte", "gibibyte", "tebibyte", "pebibyte", "exbibyte", "zebibyte", "yobibyte", "robibyte", "quebibyte"],
+const ByteSuffixesShort = [
+		"B",
+		"KB",
+		"MB",
+		"GB",
+		"TB",
+		"PB",
+		"EB",
+		"ZB",
+		"YB",
+		"RB",
+		"QB",
+		"SB",
+		"PjB",
+		"AB",
+		"KyB",
+		"AmB",
+		"PeB",
+		"BoB",
+		"SaB",
+		"QsB",
+		"ViB",
+		"UmB",
+		"RvB",
+		"HaB",
+		"KoB",
+		"OtB",
+		"LuB",
+		"SuB",
+		"MeB",
+		"BxB",
+		"GeB",
+		"DoB",
+		"KaB",
+		"NiB",
+		"GoB",
+		"AsB",
+		"ErB",
+		"OrB",
+		"LmB",
+		"SyB",
+		"CeB",
+		"UnB",
+		"MuB",
+		"OvB",
+		"WhB",
+		"McB",
+		"TrB",
+		"DjB",
+		"HyB",
+		"ObB",
+		"IyB",
+		"AbB",
+		"FiB",
+		"EnB",
+	],
+	ByteSuffixesLong = [
+		"byte",
+		"kilobyte",
+		"megabyte",
+		"gigabyte",
+		"terabyte",
+		"petabyte",
+		"exabyte",
+		"zettabyte",
+		"yottabyte",
+		"ronnabyte",
+		"quettabyte",
+		"saganbyte",
+		"pijabyte",
+		"alphabyte",
+		"kryatbyte",
+		"amosbyte",
+		"pectrabyte",
+		"bolgerbyte",
+		"sambobyte",
+		"quesabyte",
+		"vindabyte",
+		"umptabyte",
+		"rovabyte",
+		"havrabyte",
+		"kojabyte",
+		"oterabyte",
+		"lumabyte",
+		"sutabyte",
+		"memabyte",
+		"bexabyte",
+		"gemabyte",
+		"domabyte",
+		"kababyte",
+		"nitabyte",
+		"googolbyte",
+		"astobyte",
+		"erobyte",
+		"orobyte",
+		"luminabyte",
+		"symphobyte",
+		"celestabyte",
+		"universebyte",
+		"multiversebyte",
+		"omniversebyte",
+		"whiceriabyte",
+		"macribyte",
+		"truebyte",
+		"djtalbyte",
+		"hyperbyte",
+		"omnibyte",
+		"infinitybyte",
+		"absolutebyte",
+		"finalbyte",
+		"endbyte",
+	],
+	IECSuffixesShort = [
+		"B",
+		"KiB",
+		"MiB",
+		"GiB",
+		"TiB",
+		"PiB",
+		"EiB",
+		"ZiB",
+		"YiB",
+		"RiB",
+		"QiB",
+		"SiB",
+		"PjiB",
+		"AiB",
+		"KyiB",
+		"AmiB",
+		"PeiB",
+		"BoiB",
+		"SaiB",
+		"QsiB",
+		"ViiB",
+		"UmiB",
+		"RviB",
+		"HaiB",
+		"KoiB",
+		"OtiB",
+		"LuiB",
+		"SuiB",
+		"MeiB",
+		"BxiB",
+		"GeiB",
+		"DoiB",
+		"KaiB",
+		"NiiB",
+		"GoiB",
+		"AsiB",
+		"EriB",
+		"OriB",
+		"LmiB",
+		"SyiB",
+		"CeiB",
+		"UniB",
+		"MuiB",
+		"OviB",
+		"WhiB",
+		"MciB",
+		"TriB",
+		"DjiB",
+		"HyiB",
+		"ObiB",
+		"IyiB",
+		"AbiB",
+		"FiiB",
+		"EniB",
+	],
+	IECSuffixesLong = [
+		"byte",
+		"kibibyte",
+		"mebibyte",
+		"gibibyte",
+		"tebibyte",
+		"pebibyte",
+		"exbibyte",
+		"zebibyte",
+		"yobibyte",
+		"robibyte",
+		"quebibyte",
+		"sagibyte",
+		"pijibyte",
+		"alpibyte",
+		"kryibyte",
+		"amibyte",
+		"pectribyte",
+		"bolgibyte",
+		"sambibyte",
+		"quesibyte",
+		"vindibyte",
+		"umptibyte",
+		"rovibyte",
+		"havribyte",
+		"kojibyte",
+		"oteribyte",
+		"lumibyte",
+		"sutibyte",
+		"memibyte",
+		"bexibyte",
+		"gemibyte",
+		"domibyte",
+		"kabibyte",
+		"nitibyte",
+		"googlibyte",
+		"astibyte",
+		"eribyte",
+		"oribyte",
+		"luminibyte",
+		"symphibyte",
+		"celestibyte",
+		"universibyte",
+		"multiversibyte",
+		"omniversibyte",
+		"whiceribyte",
+		"macribyte",
+		"truibyte",
+		"djtalibyte",
+		"hyperibyte",
+		"omnibyte",
+		"infinitibyte",
+		"absolutibyte",
+		"finalibyte",
+		"endibyte",
+	],
 	NaturalNumbers = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"],
 	NaturalTeens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"],
 	NaturalTens = ["", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
-const S_BASE = 10n ** 50n;
+const S_BASE = 10n ** 3000n;
 const timeUnits = [
+	{ id: "poincareCycle", labelShort: "pC", labelLong: "Poincaré cycle", labelLongPlural: "Poincaré cycles", base: S_BASE * 31536000n * 10n ** 2500n },
+	{ id: "heatDeath", labelShort: "hD", labelLong: "heat death of the universe", labelLongPlural: "heat deaths of the universe", base: S_BASE * 31536000n * 10n ** 2000n },
+	{ id: "ironStar", labelShort: "iS", labelLong: "iron star formation", labelLongPlural: "iron star formations", base: S_BASE * 31536000n * 10n ** 1500n },
+	{ id: "darkEra", labelShort: "dE", labelLong: "dark era", labelLongPlural: "dark eras", base: S_BASE * 31536000n * 10n ** 115n },
+	{ id: "bhE", labelShort: "bhE", labelLong: "black hole era", labelLongPlural: "black hole eras", base: S_BASE * 31536000n * 10n ** 106n },
+	{ id: "googolYear", labelShort: "gY", labelLong: "googol year", labelLongPlural: "googol years", base: S_BASE * 31536000n * 10n ** 100n },
+	{ id: "degenerateEra", labelShort: "dgE", labelLong: "degenerate era", labelLongPlural: "degenerate eras", base: S_BASE * 31536000n * 10n ** 40n },
+	{ id: "protonDecay", labelShort: "pD", labelLong: "proton decay", labelLongPlural: "proton decays", base: S_BASE * 31536000n * 10n ** 34n },
+	{ id: "Qs", labelShort: "Qs", labelLong: "quettasecond", labelLongPlural: "quettaseconds", base: S_BASE * 10n ** 30n },
+	{ id: "Rs", labelShort: "Rs", labelLong: "ronnasecond", labelLongPlural: "ronnaseconds", base: S_BASE * 10n ** 27n },
+	{ id: "Ys", labelShort: "Ys", labelLong: "yottasecond", labelLongPlural: "yottaseconds", base: S_BASE * 10n ** 24n },
+	{ id: "mahaKalpa", labelShort: "mKalpa", labelLong: "maha-kalpa", labelLongPlural: "maha-kalpas", base: S_BASE * 31536000n * 311040000000000n },
+	{ id: "Zs", labelShort: "Zs", labelLong: "zettasecond", labelLongPlural: "zettaseconds", base: S_BASE * 10n ** 21n },
 	{ id: "Es", labelShort: "Es", labelLong: "exasecond", labelLongPlural: "exaseconds", base: S_BASE * 10n ** 18n },
+	{ id: "brahma", labelShort: "brahma", labelLong: "Brahma's day", labelLongPlural: "Brahma's days", base: S_BASE * 31536000n * 8640000000n },
 	{ id: "kalpa", labelShort: "kalpa", labelLong: "kalpa", labelLongPlural: "kalpas", base: S_BASE * 31536000n * 4320000000n },
 	{ id: "eon", labelShort: "eon", labelLong: "eon", labelLongPlural: "eons", base: S_BASE * 31536000n * 1000000000n },
 	{ id: "galactic", labelShort: "gy", labelLong: "galactic year", labelLongPlural: "galactic years", base: S_BASE * 31536000n * 230000000n },
@@ -22,10 +256,13 @@ const timeUnits = [
 	{ id: "dec", labelShort: "dec", labelLong: "decade", labelLongPlural: "decades", base: S_BASE * 31536000n * 10n },
 	{ id: "y", labelShort: "y", labelLong: "year", labelLongPlural: "years", base: S_BASE * 31536000n },
 	{ id: "mo", labelShort: "mo", labelLong: "month", labelLongPlural: "months", base: S_BASE * 2592000n },
+	{ id: "fortnight", labelShort: "ftn", labelLong: "fortnight", labelLongPlural: "fortnights", base: S_BASE * 86400n * 14n },
 	{ id: "w", labelShort: "w", labelLong: "week", labelLongPlural: "weeks", base: S_BASE * 604800n },
 	{ id: "d", labelShort: "d", labelLong: "day", labelLongPlural: "days", base: S_BASE * 86400n },
 	{ id: "h", labelShort: "h", labelLong: "hour", labelLongPlural: "hours", base: S_BASE * 3600n },
+	{ id: "moment", labelShort: "mom", labelLong: "moment", labelLongPlural: "moments", base: S_BASE * 90n },
 	{ id: "m", labelShort: "m", labelLong: "minute", labelLongPlural: "minutes", base: S_BASE * 60n },
+	{ id: "microfortnight", labelShort: "μftn", labelLong: "microfortnight", labelLongPlural: "microfortnights", base: (S_BASE * 12096n) / 10000n },
 	{ id: "s", labelShort: "s", labelLong: "second", labelLongPlural: "seconds", base: S_BASE },
 	{ id: "cs", labelShort: "cs", labelLong: "centisecond", labelLongPlural: "centiseconds", base: S_BASE / 100n },
 	{ id: "ms", labelShort: "ms", labelLong: "millisecond", labelLongPlural: "milliseconds", base: S_BASE / 1000n },
@@ -42,18 +279,56 @@ const timeUnits = [
 	{ id: "ys", labelShort: "ys", labelLong: "yoctosecond", labelLongPlural: "yoctoseconds", base: S_BASE / 10n ** 24n },
 	{ id: "rs", labelShort: "rs", labelLong: "rontosecond", labelLongPlural: "rontoseconds", base: S_BASE / 10n ** 27n },
 	{ id: "qs", labelShort: "qs", labelLong: "quectosecond", labelLongPlural: "quectoseconds", base: S_BASE / 10n ** 30n },
-	{ id: "planck", labelShort: "tP", labelLong: "Planck time", labelLongPlural: "Planck times", base: 539124n },
+	{ id: "planck", labelShort: "tP", labelLong: "Planck time", labelLongPlural: "Planck times", base: 539124n * (S_BASE / 10n ** 49n) },
 ];
 
-const L_BASE = 10n ** 45n;
+const L_BASE = 10n ** 3000n;
 const lengthUnits = [
+	{ id: "omegaLength", sys: "astro", labelShort: "Ωm", labelLong: "omega length", labelLongPlural: "omega lengths", base: L_BASE * 10n ** 2000n },
+	{ id: "multiverseNode", sys: "astro", labelShort: "mvN", labelLong: "multiverse node", labelLongPlural: "multiverse nodes", base: L_BASE * 10n ** 1500n },
+	{ id: "realitySpan", sys: "astro", labelShort: "rS", labelLong: "reality span", labelLongPlural: "reality spans", base: L_BASE * 10n ** 1000n },
+	{ id: "hyperverseSpan", sys: "astro", labelShort: "hvS", labelLong: "hyperverse span", labelLongPlural: "hyperverse spans", base: L_BASE * 10n ** 500n },
+	{ id: "omniverseSpan", sys: "astro", labelShort: "ovS", labelLong: "omniverse span", labelLongPlural: "omniverse spans", base: L_BASE * 10n ** 250n },
+	{ id: "macrimeter", sys: "metric", labelShort: "McM", labelLong: "macrimeter", labelLongPlural: "macrimeters", base: L_BASE * 10n ** 120n },
+	{ id: "whiceriameter", sys: "metric", labelShort: "WhM", labelLong: "whiceriameter", labelLongPlural: "whiceriameters", base: L_BASE * 10n ** 115n },
+	{ id: "erometer", sys: "metric", labelShort: "ErM", labelLong: "erometer", labelLongPlural: "erometers", base: L_BASE * 10n ** 106n },
+	{ id: "astrometer", sys: "metric", labelShort: "AsM", labelLong: "astrometer", labelLongPlural: "astrometers", base: L_BASE * 10n ** 103n },
+	{ id: "GoM", sys: "metric", labelShort: "GoM", labelLong: "googolmeter", labelLongPlural: "googolmeters", base: L_BASE * 10n ** 100n },
+	{ id: "NiM", sys: "metric", labelShort: "NiM", labelLong: "nitameter", labelLongPlural: "nitameters", base: L_BASE * 10n ** 99n },
+	{ id: "KaM", sys: "metric", labelShort: "KaM", labelLong: "kabameter", labelLongPlural: "kabameters", base: L_BASE * 10n ** 96n },
+	{ id: "DoM", sys: "metric", labelShort: "DoM", labelLong: "domameter", labelLongPlural: "domameters", base: L_BASE * 10n ** 93n },
+	{ id: "GeM", sys: "metric", labelShort: "GeM", labelLong: "gemameter", labelLongPlural: "gemameters", base: L_BASE * 10n ** 90n },
+	{ id: "BxM", sys: "metric", labelShort: "BxM", labelLong: "bexameter", labelLongPlural: "bexameters", base: L_BASE * 10n ** 87n },
+	{ id: "MeM", sys: "metric", labelShort: "MeM", labelLong: "memameter", labelLongPlural: "memameters", base: L_BASE * 10n ** 84n },
+	{ id: "SuM", sys: "metric", labelShort: "SuM", labelLong: "sutameter", labelLongPlural: "sutameters", base: L_BASE * 10n ** 81n },
+	{ id: "LuM", sys: "metric", labelShort: "LuM", labelLong: "lumameter", labelLongPlural: "lumameters", base: L_BASE * 10n ** 78n },
+	{ id: "OtM", sys: "metric", labelShort: "OtM", labelLong: "oterameter", labelLongPlural: "oterameters", base: L_BASE * 10n ** 75n },
+	{ id: "KoM", sys: "metric", labelShort: "KoM", labelLong: "kojameter", labelLongPlural: "kojameters", base: L_BASE * 10n ** 72n },
+	{ id: "HaM", sys: "metric", labelShort: "HaM", labelLong: "havrameter", labelLongPlural: "havrameters", base: L_BASE * 10n ** 69n },
+	{ id: "RvM", sys: "metric", labelShort: "RvM", labelLong: "rovameter", labelLongPlural: "rovameters", base: L_BASE * 10n ** 66n },
+	{ id: "UmM", sys: "metric", labelShort: "UmM", labelLong: "umptameter", labelLongPlural: "umptameters", base: L_BASE * 10n ** 63n },
+	{ id: "ViM", sys: "metric", labelShort: "ViM", labelLong: "vindameter", labelLongPlural: "vindameters", base: L_BASE * 10n ** 60n },
+	{ id: "QsM", sys: "metric", labelShort: "QsM", labelLong: "quesameter", labelLongPlural: "quesameters", base: L_BASE * 10n ** 57n },
+	{ id: "SaM", sys: "metric", labelShort: "SaM", labelLong: "sambometer", labelLongPlural: "sambometers", base: L_BASE * 10n ** 54n },
+	{ id: "BoM", sys: "metric", labelShort: "BoM", labelLong: "bolgermeter", labelLongPlural: "bolgermeters", base: L_BASE * 10n ** 51n },
+	{ id: "PeM", sys: "metric", labelShort: "PeM", labelLong: "pectrameter", labelLongPlural: "pectrameters", base: L_BASE * 10n ** 48n },
+	{ id: "AmM", sys: "metric", labelShort: "AmM", labelLong: "amosmeter", labelLongPlural: "amosmeters", base: L_BASE * 10n ** 45n },
+	{ id: "KyM", sys: "metric", labelShort: "KyM", labelLong: "kryatmeter", labelLongPlural: "kryatmeters", base: L_BASE * 10n ** 42n },
+	{ id: "AlM", sys: "metric", labelShort: "AlM", labelLong: "alphameter", labelLongPlural: "alphameters", base: L_BASE * 10n ** 39n },
+	{ id: "PjM", sys: "metric", labelShort: "PjM", labelLong: "pijameter", labelLongPlural: "pijameters", base: L_BASE * 10n ** 36n },
+	{ id: "SgM", sys: "metric", labelShort: "SgM", labelLong: "saganmeter", labelLongPlural: "saganmeters", base: L_BASE * 10n ** 33n },
 	{ id: "Qm", sys: "metric", labelShort: "Qm", labelLong: "quettameter", labelLongPlural: "quettameters", base: L_BASE * 10n ** 30n },
 	{ id: "Rm", sys: "metric", labelShort: "Rm", labelLong: "ronnameter", labelLongPlural: "ronnameters", base: L_BASE * 10n ** 27n },
+	{ id: "obsUniverse", sys: "astro", labelShort: "obsU", labelLong: "observable universe", labelLongPlural: "observable universes", base: L_BASE * 880000n * 10n ** 21n },
+	{ id: "hubble", sys: "astro", labelShort: "hubble", labelLong: "Hubble length", labelLongPlural: "Hubble lengths", base: L_BASE * 144000n * 10n ** 21n },
+	{ id: "gpc", sys: "astro", labelShort: "Gpc", labelLong: "gigaparsec", labelLongPlural: "gigaparsecs", base: L_BASE * 30856775814913670000000000n },
 	{ id: "Ym", sys: "metric", labelShort: "Ym", labelLong: "yottameter", labelLongPlural: "yottameters", base: L_BASE * 10n ** 24n },
+	{ id: "mpc", sys: "astro", labelShort: "Mpc", labelLong: "megaparsec", labelLongPlural: "megaparsecs", base: L_BASE * 30856775814913670000000n },
 	{ id: "Zm", sys: "metric", labelShort: "Zm", labelLong: "zettameter", labelLongPlural: "zettameters", base: L_BASE * 10n ** 21n },
-	{ id: "pc", sys: "astro", labelShort: "pc", labelLong: "parsec", labelLongPlural: "parsecs", base: L_BASE * 30856775814913670n },
-	{ id: "ly", sys: "astro", labelShort: "ly", labelLong: "lightyear", labelLongPlural: "lightyears", base: L_BASE * 9460730472580800n },
 	{ id: "Em", sys: "metric", labelShort: "Em", labelLong: "exameter", labelLongPlural: "exameters", base: L_BASE * 10n ** 18n },
+	{ id: "pc", sys: "astro", labelShort: "pc", labelLong: "parsec", labelLongPlural: "parsecs", base: L_BASE * 30856775814913670n },
+	{ id: "sirio", sys: "astro", labelShort: "sirio", labelLong: "siriometer", labelLongPlural: "siriometers", base: L_BASE * 14959787070000000n },
+	{ id: "ly", sys: "astro", labelShort: "ly", labelLong: "lightyear", labelLongPlural: "lightyears", base: L_BASE * 9460730472580800n },
 	{ id: "Pm", sys: "metric", labelShort: "Pm", labelLong: "petameter", labelLongPlural: "petameters", base: L_BASE * 10n ** 15n },
 	{ id: "Tm", sys: "metric", labelShort: "Tm", labelLong: "terameter", labelLongPlural: "terameters", base: L_BASE * 10n ** 12n },
 	{ id: "au", sys: "astro", labelShort: "au", labelLong: "astronomical unit", labelLongPlural: "astronomical units", base: L_BASE * 149597870700n },
@@ -63,16 +338,23 @@ const lengthUnits = [
 	{ id: "mi", sys: "imperial", labelShort: "mi", labelLong: "mile", labelLongPlural: "miles", base: (L_BASE * 1609344n) / 1000n },
 	{ id: "km", sys: "metric", labelShort: "km", labelLong: "kilometer", labelLongPlural: "kilometers", base: L_BASE * 1000n },
 	{ id: "hm", sys: "metric", labelShort: "hm", labelLong: "hectometer", labelLongPlural: "hectometers", base: L_BASE * 100n },
+	{ id: "furlong", sys: "imperial", labelShort: "fur", labelLong: "furlong", labelLongPlural: "furlongs", base: (L_BASE * 201168n) / 1000n },
 	{ id: "dam", sys: "metric", labelShort: "dam", labelLong: "decameter", labelLongPlural: "decameters", base: L_BASE * 10n },
-	{ id: "m", sys: "metric", labelShort: "m", labelLong: "meter", labelLongPlural: "meters", base: L_BASE },
+	{ id: "fathom", sys: "imperial", labelShort: "fath", labelLong: "fathom", labelLongPlural: "fathoms", base: (L_BASE * 18288n) / 10000n },
+	{ id: "smoot", sys: "imperial", labelShort: "sm", labelLong: "smoot", labelLongPlural: "smoots", base: (L_BASE * 17018n) / 10000n },
 	{ id: "yd", sys: "imperial", labelShort: "yd", labelLong: "yard", labelLongPlural: "yards", base: (L_BASE * 9144n) / 10000n },
+	{ id: "m", sys: "metric", labelShort: "m", labelLong: "meter", labelLongPlural: "meters", base: L_BASE },
 	{ id: "ft", sys: "imperial", labelShort: "ft", labelLong: "foot", labelLongPlural: "feet", base: (L_BASE * 3048n) / 10000n },
 	{ id: "dm", sys: "metric", labelShort: "dm", labelLong: "decimeter", labelLongPlural: "decimeters", base: L_BASE / 10n },
+	{ id: "attoparsec", sys: "astro", labelShort: "apc", labelLong: "attoparsec", labelLongPlural: "attoparsecs", base: (L_BASE * 30856775814913670n) / 1000000000000000000n },
 	{ id: "in", sys: "imperial", labelShort: "in", labelLong: "inch", labelLongPlural: "inches", base: (L_BASE * 254n) / 10000n },
 	{ id: "cm", sys: "metric", labelShort: "cm", labelLong: "centimeter", labelLongPlural: "centimeters", base: L_BASE / 100n },
+	{ id: "barleycorn", sys: "imperial", labelShort: "bc", labelLong: "barleycorn", labelLongPlural: "barleycorns", base: (L_BASE * 254n) / 30000n },
 	{ id: "mm", sys: "metric", labelShort: "mm", labelLong: "millimeter", labelLongPlural: "millimeters", base: L_BASE / 1000n },
 	{ id: "thou", sys: "imperial", labelShort: "thou", labelLong: "thou", labelLongPlural: "thou", base: (L_BASE * 254n) / 10000000n },
+	{ id: "twip", sys: "imperial", labelShort: "twip", labelLong: "twip", labelLongPlural: "twips", base: (L_BASE * 254n) / 14400000n },
 	{ id: "um", sys: "metric", labelShort: "μm", labelLong: "micrometer", labelLongPlural: "micrometers", base: L_BASE / 10n ** 6n },
+	{ id: "beardSecond", sys: "metric", labelShort: "bs", labelLong: "beard-second", labelLongPlural: "beard-seconds", base: (L_BASE * 5n) / 1000000000n },
 	{ id: "nm", sys: "metric", labelShort: "nm", labelLong: "nanometer", labelLongPlural: "nanometers", base: L_BASE / 10n ** 9n },
 	{ id: "pm", sys: "metric", labelShort: "pm", labelLong: "picometer", labelLongPlural: "picometers", base: L_BASE / 10n ** 12n },
 	{ id: "fm", sys: "metric", labelShort: "fm", labelLong: "femtometer", labelLongPlural: "femtometers", base: L_BASE / 10n ** 15n },
@@ -214,9 +496,26 @@ function formatCompact(val, displayMode, locale, localeOptions, separator) {
 		return "0";
 	}
 
+	const isLong = displayMode === "full",
+		isBig = typeof val === "bigint";
+
+	if (isBig) {
+		const str = val.toString(),
+			suffixIndex = Math.floor((str.length - 1) / 3),
+			suffixString = (isLong ? " " : "") + getMagnitudeSuffix(suffixIndex, isLong);
+
+		// Manually slice out the significant digits to prevent Infinity
+		const decIndex = str.length - suffixIndex * 3,
+			sigDigits = str.slice(0, 16),
+			numStr = `${sigDigits.slice(0, decIndex)}.${sigDigits.slice(decIndex)}`;
+
+		const formattedNum = applySeparator(Number(numStr).toLocaleString(locale, localeOptions), locale, separator);
+
+		return formattedNum + suffixString;
+	}
+
 	const numVal = Number(val),
 		suffixIndex = Math.floor(Math.log10(numVal) / 3),
-		isLong = displayMode === "full",
 		suffixString = (isLong ? " " : "") + getMagnitudeSuffix(suffixIndex, isLong);
 
 	const formattedNum = applySeparator((numVal / Math.pow(10, suffixIndex * 3)).toLocaleString(locale, localeOptions), locale, separator);
@@ -227,31 +526,70 @@ function formatCompact(val, displayMode, locale, localeOptions, separator) {
 function formatBytes(val, power, suffixes, locale, localeOptions, displayMode, separator, labelFormat) {
 	const isLong = labelFormat === "long";
 
-	function getSuffix(index, count) {
+	function getSuffix(index, countStr) {
 		if (!isLong) {
 			return suffixes.short[index];
 		}
 
 		const base = suffixes.long[index];
 
-		return count === 1 || count === 1n ? base : `${base}s`;
+		return countStr === "1" ? base : `${base}s`;
 	}
 
 	if (val === 0 || val === 0n) {
-		return `0 ${getSuffix(0, 0)}`;
+		return `0 ${getSuffix(0, "0")}`;
 	}
 
+	const precision = localeOptions.maximumFractionDigits !== undefined ? localeOptions.maximumFractionDigits : 2;
+
 	if (displayMode === "short") {
-		const numVal = Number(val);
+		let suffixIndex = 0,
+			formattedCount = "";
 
-		let suffixIndex = Math.floor(Math.log(numVal) / Math.log(power));
+		if (typeof val === "bigint") {
+			suffixIndex = suffixes.short.length - 1;
 
-		suffixIndex = Math.max(0, Math.min(suffixIndex, suffixes.short.length - 1));
+			for (let i = 0; i < suffixes.short.length; i++) {
+				if (val < BigInt(power) ** BigInt(i + 1)) {
+					suffixIndex = i;
 
-		const count = numVal / Math.pow(power, suffixIndex),
-			formattedNum = applySeparator(count.toLocaleString(locale, localeOptions), locale, separator);
+					break;
+				}
+			}
 
-		return `${formattedNum} ${getSuffix(suffixIndex, count)}`;
+			const unitValue = BigInt(power) ** BigInt(suffixIndex),
+				countBig = val / unitValue,
+				strCount = countBig.toString();
+
+			if (strCount.length > 15) {
+				const frac = strCount.slice(1, 1 + precision).padEnd(precision, "0");
+
+				formattedCount = precision > 0 ? `${strCount[0]}.${frac}e+${strCount.length - 1}` : `${strCount[0]}e+${strCount.length - 1}`;
+			} else {
+				const scaledCount = (val * 10n ** BigInt(precision)) / unitValue,
+					scaledStr = scaledCount.toString().padStart(precision + 1, "0"),
+					intPart = scaledStr.slice(0, -precision) || "0",
+					fracPart = scaledStr.slice(-precision),
+					num = Number(`${intPart}.${fracPart}`);
+
+				formattedCount = applySeparator(num.toLocaleString(locale, localeOptions), locale, separator);
+			}
+		} else {
+			const numVal = Number(val);
+
+			suffixIndex = Math.floor(Math.log(numVal) / Math.log(power));
+			suffixIndex = Math.max(0, Math.min(suffixIndex, suffixes.short.length - 1));
+
+			const count = numVal / Math.pow(power, suffixIndex);
+
+			if (count >= 1e15) {
+				formattedCount = count.toExponential(precision);
+			} else {
+				formattedCount = applySeparator(count.toLocaleString(locale, localeOptions), locale, separator);
+			}
+		}
+
+		return `${formattedCount} ${getSuffix(suffixIndex, formattedCount)}`;
 	}
 
 	let bigValue;
@@ -262,23 +600,31 @@ function formatBytes(val, power, suffixes, locale, localeOptions, displayMode, s
 		return "too large";
 	}
 
-	const bigPower = BigInt(power),
-		parts = [];
+	const parts = [];
 
 	for (let i = suffixes.short.length - 1; i >= 0; i--) {
-		const unitValue = bigPower ** BigInt(i),
+		const unitValue = BigInt(power) ** BigInt(i),
 			count = bigValue / unitValue;
 
 		if (count > 0n) {
-			const formattedCount = applySeparator(Number(count).toLocaleString(locale), locale, separator);
+			const strCount = count.toString();
 
-			parts.push(`${formattedCount} ${getSuffix(i, count)}`);
+			if (strCount.length > 15) {
+				const frac = strCount.slice(1, 1 + precision).padEnd(precision, "0"),
+					formattedCount = precision > 0 ? `${strCount[0]}.${frac}e+${strCount.length - 1}` : `${strCount[0]}e+${strCount.length - 1}`;
+
+				parts.push(`${formattedCount} ${getSuffix(i, formattedCount)}`);
+			} else {
+				const formattedCount = applySeparator(Number(count).toLocaleString(locale), locale, separator);
+
+				parts.push(`${formattedCount} ${getSuffix(i, formattedCount)}`);
+			}
 
 			bigValue %= unitValue;
 		}
 	}
 
-	return parts.length > 0 ? parts.join(" ") : `0 ${getSuffix(0, 0)}`;
+	return parts.length > 0 ? parts.join(" ") : `0 ${getSuffix(0, "0")}`;
 }
 
 function formatMeasurement(val, unitMap, baseUnitId, displayMode, labelFormat, locale, localeOptions, separator) {
@@ -298,23 +644,41 @@ function formatMeasurement(val, unitMap, baseUnitId, displayMode, labelFormat, l
 		totalBaseUnits = BigInt(Math.trunc(val * Number(baseUnitDef.base)));
 	}
 
+	const precision = localeOptions.maximumFractionDigits !== undefined ? localeOptions.maximumFractionDigits : 2;
+
 	if (displayMode === "short") {
-		let numVal = Number(totalBaseUnits),
-			targetUnit = unitMap[unitMap.length - 1];
+		let targetUnit = unitMap[unitMap.length - 1];
 
 		for (const unit of unitMap) {
-			if (numVal >= Number(unit.base)) {
+			if (totalBaseUnits >= unit.base) {
 				targetUnit = unit;
+
 				break;
 			}
 		}
 
-		const count = numVal / Number(targetUnit.base),
-			isPlural = count !== 1,
+		const countBig = totalBaseUnits / targetUnit.base,
+			strCount = countBig.toString();
+
+		let formattedCount;
+
+		if (strCount.length > 15) {
+			const frac = strCount.slice(1, 1 + precision).padEnd(precision, "0");
+
+			formattedCount = precision > 0 ? `${strCount[0]}.${frac}e+${strCount.length - 1}` : `${strCount[0]}e+${strCount.length - 1}`;
+		} else {
+			const scaledCount = (totalBaseUnits * 10n ** BigInt(precision)) / targetUnit.base,
+				scaledStr = scaledCount.toString().padStart(precision + 1, "0"),
+				intPart = scaledStr.slice(0, -precision) || "0",
+				fracPart = scaledStr.slice(-precision),
+				countNum = Number(`${intPart}.${fracPart}`);
+
+			formattedCount = applySeparator(countNum.toLocaleString(locale, localeOptions), locale, separator);
+		}
+
+		const isPlural = formattedCount !== "1" && formattedCount !== "1.0" && formattedCount !== "1.00",
 			label = labelFormat === "long" ? (isPlural ? targetUnit.labelLongPlural : targetUnit.labelLong) : targetUnit.labelShort,
 			space = labelFormat === "long" ? " " : "";
-
-		const formattedCount = applySeparator(count.toLocaleString(locale, localeOptions), locale, separator);
 
 		return `${formattedCount}${space}${label}`;
 	}
@@ -328,13 +692,29 @@ function formatMeasurement(val, unitMap, baseUnitId, displayMode, labelFormat, l
 		const count = remaining / unit.base;
 
 		if (count > 0n) {
-			const isPlural = count !== 1n,
-				label = labelFormat === "long" ? (isPlural ? unit.labelLongPlural : unit.labelLong) : unit.labelShort,
-				space = labelFormat === "long" ? " " : "";
+			const strCount = count.toString();
 
-			const formattedCount = applySeparator(Number(count).toLocaleString(locale), locale, separator);
+			let formattedCount;
 
-			parts.push(`${formattedCount}${space}${label}`);
+			if (strCount.length > 15) {
+				const frac = strCount.slice(1, 1 + precision).padEnd(precision, "0");
+
+				formattedCount = precision > 0 ? `${strCount[0]}.${frac}e+${strCount.length - 1}` : `${strCount[0]}e+${strCount.length - 1}`;
+
+				const isPlural = true,
+					label = labelFormat === "long" ? (isPlural ? unit.labelLongPlural : unit.labelLong) : unit.labelShort,
+					space = labelFormat === "long" ? " " : "";
+
+				parts.push(`${formattedCount}${space}${label}`);
+			} else {
+				formattedCount = applySeparator(Number(count).toLocaleString(locale), locale, separator);
+
+				const isPlural = formattedCount !== "1",
+					label = labelFormat === "long" ? (isPlural ? unit.labelLongPlural : unit.labelLong) : unit.labelShort,
+					space = labelFormat === "long" ? " " : "";
+
+				parts.push(`${formattedCount}${space}${label}`);
+			}
 
 			remaining %= unit.base;
 		}

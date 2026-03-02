@@ -17,8 +17,8 @@ NumNums supports nearly 20 distinct formatting modes out of the box, including:
 
 * **Math & Scale**: Separated, Scientific, Compact, Fraction, Percentage
 * **Developer**: Binary, Hexadecimal, Octal, Base36
-* **Data**: Bytes, IEC Bytes (scaling up to Quettabytes)
-* **Time & Space**: Duration (Planck time to Kalpas), Length (Metric, Imperial, Astronomical)
+* **Data**: Bytes, IEC Bytes (scaling past Quettabytes up to Endbytes)
+* **Time & Space**: Duration (Planck time to Poincaré Cycles), Length (Planck lengths to Omega lengths, including Imperial & Astronomical)
 * **System & UI**: Datetime (Unix timestamps), File Permissions (chmod), Color (Hex/RGB), Currency
 * **Linguistic**: Natural Language, Roman Numerals
 
@@ -28,4 +28,4 @@ NumNums is highly customizable through your VS Code settings. You can configure:
 * Display modes to toggle between condensed decimals (`14.2d`) and fully expanded fractions (`14d 4h 48m`).
 * Base units for time and length to control how raw numbers are interpreted (e.g., milliseconds vs seconds).
 * Custom grouping separators, regional locales, and custom currency codes.
-* Shorthand vs full-word unit labels.
+* Shorthand vs full-word unit labels with automatic singular/plural grammar.
